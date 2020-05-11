@@ -1,6 +1,6 @@
 # SFML 2.5 in Qt 5 Window
 
-The main part consist of an interface: `ISfQt_canvas`, and a concrete class,
+The main part consists of an interface: `ISfQt_canvas`, and a concrete class,
 `SfQt_canvas`.
 The later uses function objects as its `on_init` and `on_update` functions,
 so the entire behavior is set-up by client code.
