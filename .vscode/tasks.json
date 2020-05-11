@@ -1,0 +1,102 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run qmake",
+            "type": "shell",
+            "command": "qmake",
+            "args": [
+                "&&",
+                "rm",
+                "-r",
+                "./debug",
+                "./release"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false,
+                "group": "gcc-build"
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "run make",
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true,
+                "group": "gcc-build"
+            },
+            "group": "build"
+        },
+        {
+            "label": "run `make clean`",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "gcc-build"
+            },
+            "group": "build"
+        },
+        {
+            "label": "run app",
+            "type": "shell",
+            "command": "./dist/bin/${workspaceFolderBasename}.exe",
+            "presentation": {
+                "reveal": "always",
+                "clear": false,
+                "echo": true,
+                "focus": true,
+                "panel": "shared",
+                "group": "gcc-build",
+                "showReuseMessage": true
+            },
+            "group": "test"
+        },
+        {
+            "label": "run-with-c++filt",
+            "type": "shell",
+            "command": "./dist/bin/${workspaceFolderBasename}.exe",
+            "args": [
+                "|",
+                "c++filt",
+                "-t"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "clear": false,
+                "echo": true,
+                "focus": true,
+                "panel": "shared",
+                "group": "gcc-build",
+                "showReuseMessage": true
+            },
+            "group": "test"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+# IDE files
+.vscode/c_cpp_properties.json
+
+# distribution
+bin/
+build/
+dist/
+
+# project specific files
+Makefile*
+.qmake*
