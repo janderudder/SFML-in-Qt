@@ -9,7 +9,7 @@ An alternative would be to derive from `ISfQt_canvas` interface, overriding
 the virtual methods directly.
 
 The interface code is heavily inspired by this article:
-`http://becomingindiedev.blogspot.com/2013/10/qt-5-and-sfml-20-integration.html`.
+<http://becomingindiedev.blogspot.com/2013/10/qt-5-and-sfml-20-integration.html>.
 
 If you know a better, cleaner, simpler or more idiomatic way to mix SFML and Qt,
 please let me know.
