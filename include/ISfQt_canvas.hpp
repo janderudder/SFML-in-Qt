@@ -29,7 +29,6 @@ public:
     // pull protected methods in public scope
     using sf::RenderWindow::clear;
     using sf::RenderWindow::draw;
-    using sf::RenderWindow::pollEvent;
 
 private:
     QTimer  m_timer;
