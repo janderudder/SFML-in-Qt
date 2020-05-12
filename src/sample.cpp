@@ -1,7 +1,7 @@
 #include <QApplication>
-#include <QFrame>
+#include <QWidget>
 #include <SFML/Graphics.hpp>
-#include "SfQt_canvas.hpp"
+#include "sfqt/SfQt_canvas.hpp"
 
 
 int main(int argc, char *argv[])
@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
     QApplication app {argc, argv};
 
     // Create a frame for SFML to be displayed in
-    auto main_frame = QFrame{};
-    main_frame.setWindowTitle("SFML canvas in Qt window");
-    main_frame.resize(320, 320);
-    main_frame.show();
+    QWidget window;
+    window.setWindowTitle("SFML canvas in Qt window");
+    window.resize(320, 320);
+    window.show();
 
     // Objects that will be used by this specific SFML canvas
     sf::Texture cvs_tex;
@@ -20,12 +20,12 @@ int main(int argc, char *argv[])
     sf::Clock cvs_clock;
 
     // An instance of a class that derives from ISfQt_canvas.
-    // This class uses the constructor to provide on_init and on_update
-    // handler functions as function objects, instead of implementing them
-    // via inheritance.
+    // This class uses the constructor (or alternatively setter methods) to
+    // provide `on_init` and `on_update` handler functions as function objects,
+    // instead of implementing them via inheritance.
     SfQt_canvas sfml_canvas
     {
-        SfQt_canvas::Parent     {&main_frame},
+        SfQt_canvas::Parent     {&window},
         SfQt_canvas::Position   {32, 32},
         SfQt_canvas::Size       {256, 256},
         [&] // init function
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         [&] // update function
         {
             sfml_canvas.clear(sf::Color::Black);
-            cvs_sprite.rotate(cvs_clock.restart().asSeconds() * 150.f);
+            cvs_sprite.rotate(cvs_clock.restart().asSeconds() * -64.f);
             sfml_canvas.draw(cvs_sprite);
         }
     };

@@ -10,15 +10,15 @@ class ISfQt_canvas
 {
 public:
     ISfQt_canvas(
-        QWidget*        parent,
-        QPoint const&   position,
-        QSize const&    size,
+        QWidget*        parent      = nullptr,
+        QPoint const&   position    = {},
+        QSize const&    size        = {},
         unsigned int    frame_time  = 15
     ) noexcept;
 
     virtual ~ISfQt_canvas() {};
 
-    virtual void on_init()   = 0;
+    virtual void on_init() = 0;
     virtual void on_update() = 0;
 
     // inherited from QWidget

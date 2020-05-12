@@ -1,4 +1,4 @@
-#include "ISfQt_canvas.hpp"
+#include "sfqt/ISfQt_canvas.hpp"
 #include <SFML/Window/Event.hpp>
 
 #ifdef Q_WS_X11

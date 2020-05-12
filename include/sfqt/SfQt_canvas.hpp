@@ -1,5 +1,5 @@
 #pragma once
-#include "ISfQt_canvas.hpp"
+#include "sfqt/ISfQt_canvas.hpp"
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/Color.hpp>
@@ -18,17 +18,25 @@ public:
     using Size     = QSize;
 
 public:
+    SfQt_canvas() = default;
+
     template <class Init_fn, class Update_fn>
     SfQt_canvas(
         Parent          parent,
-        Position const& position,
-        Size const&     size,
-        Init_fn&&,
-        Update_fn&&
+        Position const& position    = {},
+        Size const&     size        = {},
+        Init_fn&&       on_init_fn  = {},
+        Update_fn&&     on_update_fn= {}
     ) noexcept;
 
     void on_init() override;
     void on_update() override;
+
+    template <class Fn> void set_init_fn(Fn&&);
+    template <class Fn> void set_update_fn(Fn&&);
+
+    auto init_fn() const -> std::function<void()> const&;
+    auto update_fn() const -> std::function<void()> const&;
 
 };
 
@@ -36,16 +44,35 @@ public:
 
 
 // inline impl.
+////////////////////////////////////////////////////////////////////////////////
 template <class Init_fn, class Update_fn>
 SfQt_canvas::SfQt_canvas(
     QWidget*            parent,
     QPoint const&       position,
     QSize const&        size,
-    Init_fn&&           init_fn,
-    Update_fn&&         update_fn
+    Init_fn&&           on_init_fn,
+    Update_fn&&         on_update_fn
 ) noexcept
     : ISfQt_canvas      {parent, position, size}
-    , m_init_function   {std::forward<Init_fn>(init_fn)}
-    , m_update_function {std::forward<Update_fn>(update_fn)}
+    , m_init_function   {std::forward<Init_fn>(on_init_fn)}
+    , m_update_function {std::forward<Update_fn>(on_update_fn)}
 {
+}
+
+
+
+
+template <class Fn>
+void SfQt_canvas::set_init_fn(Fn&& fn)
+{
+    m_init_function = std::forward<Fn>(fn);
+}
+
+
+
+
+template <class Fn>
+void SfQt_canvas::set_update_fn(Fn&& fn)
+{
+    m_update_function = std::forward<Fn>(fn);
 }
