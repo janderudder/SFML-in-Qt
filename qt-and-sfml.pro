@@ -31,6 +31,7 @@ QT += widgets
 
 # Input
 INCLUDEPATH += include
+SOURCES += src/sfqt/*.cpp
 SOURCES += src/*.cpp
 
 # SFML
