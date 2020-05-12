@@ -1,6 +1,19 @@
 #include "sfqt/SfQt_canvas.hpp"
 
 
+
+SfQt_canvas::SfQt_canvas(
+      QWidget*      parent
+    , QPoint const& position
+    , QSize const&  size
+) noexcept
+    : ISfQt_canvas  {parent, position, size}
+{
+}
+
+
+
+
 // inherited from ISfQt_canvas
 ////////////////////////////////////////////////////////////////////////////////
 void SfQt_canvas::on_init()

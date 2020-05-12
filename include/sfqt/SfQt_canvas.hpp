@@ -18,15 +18,19 @@ public:
     using Size     = QSize;
 
 public:
-    SfQt_canvas() = default;
+    SfQt_canvas(
+        Parent          parent      = nullptr,
+        Position const& position    = {},
+        Size const&     size        = {}
+    ) noexcept;
 
     template <class Init_fn, class Update_fn>
     SfQt_canvas(
         Parent          parent,
-        Position const& position    = {},
-        Size const&     size        = {},
-        Init_fn&&       on_init_fn  = {},
-        Update_fn&&     on_update_fn= {}
+        Position const& position,
+        Size const&     size,
+        Init_fn&&       on_init_fn,
+        Update_fn&&     on_update_fn
     ) noexcept;
 
     void on_init() override;
