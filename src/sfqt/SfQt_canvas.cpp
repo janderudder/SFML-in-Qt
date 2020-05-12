@@ -7,7 +7,9 @@ SfQt_canvas::SfQt_canvas(
     , QPoint const& position
     , QSize const&  size
 ) noexcept
-    : ISfQt_canvas  {parent, position, size}
+    : ISfQt_canvas      {parent, position, size}
+    , m_init_function   {[]{}}
+    , m_update_function {[]{}}
 {
 }
 
