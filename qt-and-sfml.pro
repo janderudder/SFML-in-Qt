@@ -31,6 +31,7 @@ QT += widgets
 
 # Input
 INCLUDEPATH += include
+HEADERS += include/sfqt/*.hpp
 SOURCES += src/sfqt/*.cpp
 SOURCES += src/*.cpp
 

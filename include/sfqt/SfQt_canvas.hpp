@@ -9,8 +9,10 @@
 class SfQt_canvas
     : public ISfQt_canvas
 {
-    std::function<void()>            m_init_function;
-    std::function<void()>            m_update_function;
+    Q_OBJECT
+
+    std::function<void()> m_init_function;
+    std::function<void()> m_update_function;
 
 public:
     using Parent   = QWidget*;

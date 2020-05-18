@@ -1,5 +1,5 @@
 #include "sfqt/ISfQt_canvas.hpp"
-#include <SFML/Window/Event.hpp>
+
 
 #ifdef Q_WS_X11
     #include <Qt/qx11info_x11.h>
@@ -70,7 +70,6 @@ QPaintEngine* ISfQt_canvas::paintEngine() const
 
 void ISfQt_canvas::paintEvent(QPaintEvent*)
 {
-    sf::Event event;
-    while (this->pollEvent(event)) {}
+    while (this->pollEvent(m_event)) {}
     this->on_update();
 }

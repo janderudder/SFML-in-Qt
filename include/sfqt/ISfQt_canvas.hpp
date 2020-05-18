@@ -2,12 +2,15 @@
 #include <QWidget>
 #include <QTimer>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 
 
 class ISfQt_canvas
     : public QWidget
     , protected sf::RenderWindow
 {
+    Q_OBJECT
+
 public:
     ISfQt_canvas(
         QWidget*        parent      = nullptr,
@@ -32,7 +35,8 @@ public:
     using sf::RenderWindow::draw;
 
 private:
-    QTimer  m_timer;
-    bool    m_is_init;
+    QTimer    m_timer;
+    bool      m_is_init;
+    sf::Event m_event;
 
 };
