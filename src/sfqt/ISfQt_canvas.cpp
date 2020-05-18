@@ -73,5 +73,4 @@ void ISfQt_canvas::paintEvent(QPaintEvent*)
     sf::Event event;
     while (this->pollEvent(event)) {}
     this->on_update();
-    RenderWindow::display();
 }

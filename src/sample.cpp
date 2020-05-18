@@ -28,7 +28,9 @@ int main(int argc, char *argv[])
         SfQt_canvas::Parent     {&window},
         SfQt_canvas::Position   {32, 32},
         SfQt_canvas::Size       {256, 256},
-        [&] // init function
+
+        // init function
+        [&cvs_tex, &cvs_sprite, &cvs_clock]
         {
             cvs_tex.loadFromFile("resource/sfml-icon-small.png");
             cvs_sprite.setTexture(cvs_tex);
@@ -38,11 +40,14 @@ int main(int argc, char *argv[])
             cvs_sprite.setOrigin(sprite_center);
             cvs_clock.restart();
         },
-        [&] // update function
+
+        // update function
+        [&sfml_canvas, &cvs_sprite, &cvs_clock]
         {
             sfml_canvas.clear(sf::Color::Black);
             cvs_sprite.rotate(cvs_clock.restart().asSeconds() * -64.f);
             sfml_canvas.draw(cvs_sprite);
+            sfml_canvas.display();
         }
     };
 

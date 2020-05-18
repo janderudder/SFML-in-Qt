@@ -28,6 +28,7 @@ public:
 
     // pull protected methods in public scope
     using sf::RenderWindow::clear;
+    using sf::RenderWindow::display;
     using sf::RenderWindow::draw;
 
 private:
