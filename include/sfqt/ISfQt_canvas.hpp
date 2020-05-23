@@ -33,6 +33,8 @@ public:
     using sf::RenderWindow::clear;
     using sf::RenderWindow::display;
     using sf::RenderWindow::draw;
+    using sf::RenderWindow::pollEvent;
+    using sf::RenderWindow::waitEvent;
 
 private:
     QTimer    m_timer;

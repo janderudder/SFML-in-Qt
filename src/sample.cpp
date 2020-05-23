@@ -42,10 +42,19 @@ int main(int argc, char *argv[])
         },
 
         // update function
-        [&sfml_canvas, &cvs_sprite, &cvs_clock]
+        [&sfml_canvas, &cvs_sprite, &cvs_clock, &window]
         {
+            static float factor = -64.f;
+
+            sf::Event event;
+            while (sfml_canvas.pollEvent(event)) {
+                if (event.type == sf::Event::MouseButtonPressed) {
+                    factor *= -1.f;
+                }
+            }
+
             sfml_canvas.clear(sf::Color::Black);
-            cvs_sprite.rotate(cvs_clock.restart().asSeconds() * -64.f);
+            cvs_sprite.rotate(cvs_clock.restart().asSeconds() * factor);
             sfml_canvas.draw(cvs_sprite);
             sfml_canvas.display();
         }
