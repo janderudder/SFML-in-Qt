@@ -37,6 +37,5 @@ public:
 private:
     QTimer    m_timer;
     bool      m_is_init;
-    sf::Event m_event;
 
 };

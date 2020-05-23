@@ -70,6 +70,5 @@ QPaintEngine* ISfQt_canvas::paintEngine() const
 
 void ISfQt_canvas::paintEvent(QPaintEvent*)
 {
-    while (this->pollEvent(m_event)) {}
     this->on_update();
 }
